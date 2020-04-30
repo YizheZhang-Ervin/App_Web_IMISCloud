@@ -1,0 +1,37 @@
+.bg-beige{
+    background-color:beige;
+}
+
+.color-w{
+    color:white;
+}
+.color-g{
+    color:gold;
+}
+
+.w-50{
+    width:50%;
+}
+
+.indent-3{
+    text-indent:3%;
+}
+
+.clear-lr{
+    padding-left:0;
+    padding-right:0;
+    margin-left:0;
+    margin-right:0;
+}
+
+.margin-top-1{
+    margin-top:1%;
+}
+
+.margin-tb-10{
+    margin:10% 0;
+}
+
+.bgc-b{
+    background-color:rgba(0,0,0,0.2);
+}

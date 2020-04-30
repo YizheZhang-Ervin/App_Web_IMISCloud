@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>{% block title %}IMISCloud Home{% endblock %}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="shortcut icon" href="{% static 'img/ez.ico' %}"/>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/common.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/signin.css' %}"/>
+    </head>
+    <body class="bg-beige">
+        <!-- navigation bar-->
+        <nav class="navbar navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">IMIS Cloud</a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse margin-top-1 color-g indent-3" id="navbarsExample01">
+            <p>Contact FullStack Manager: <a class="color-g" href="http://ervinzhang.pythonanywhere.com/">ErvinZhang</a></p>
+            <p>Contact DevOps Manager: <a class="color-g" href="https://www.linkedin.com/in/仕杰-何-98a516190">KingHe</a></p>
+          </div>
+        </nav>
+
+        <!-- login -->
+        <form class="form-signin text-center" method="post" action="/">
+          {% csrf_token %}
+          <img class="mb-4" src="{% static 'img/cloud.png' %}" alt="" width="72" height="72">
+          <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
+          <label for="inputaccount" class="sr-only">IMIS Account</label>
+          <input type="text" id="inputaccount" class="form-control" placeholder="IMIS Account" required="" autofocus="" name="account">
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me" name="remember" checked="checked" onclick="rememberMe()" id="rememberme"> Remember me
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">© 0000-2020</p>
+        </form>
+        <!-- scripts -->
+        <script src="{% static 'js/common.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    </body>
+</html>
