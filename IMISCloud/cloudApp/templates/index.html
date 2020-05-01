@@ -1,17 +1,8 @@
-{% extends "base.html" %}
+{% extends "index_base.html" %}
 {% load static %}
 {% block title %}IMISCloud Storage{% endblock %}
 
 {% block content %}
-{{account}}
-{{password}}
+{{files}}
 
-<!-- message -->
-{% if messages %}
-    <script>
-        {% for msg in messages %}
-            alert('{{ msg.message }}');
-        {% endfor %}
-    </script>
-{% endif %}
 {% endblock %}

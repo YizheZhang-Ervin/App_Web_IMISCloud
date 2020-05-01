@@ -30,6 +30,7 @@ class CloudStorage(models.Model):
     filename = models.TextField()
     filetype = models.TextField()
     file = models.FileField(upload_to=upload_place)
+    attribute = models.TextField(default='private')
 
     def __str__(self):
         return "File: %s" % self.filename

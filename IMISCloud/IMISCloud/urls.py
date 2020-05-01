@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from cloudApp import views
+from cloudApp import crud
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
-    path('', views.verify)
+    # path('testuser/', crud.create_testuser),
+    path('', views.login)
 ]

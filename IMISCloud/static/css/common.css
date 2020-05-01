@@ -9,8 +9,8 @@
     color:gold;
 }
 
-.w-50{
-    width:50%;
+.w-30{
+    width:32.3%!important;
 }
 
 .indent-3{
@@ -34,4 +34,12 @@
 
 .bgc-b{
     background-color:rgba(0,0,0,0.2);
+}
+
+.self-container::-webkit-scrollbar{
+    display:none
+}
+
+.d-inline{
+    display:inline;
 }

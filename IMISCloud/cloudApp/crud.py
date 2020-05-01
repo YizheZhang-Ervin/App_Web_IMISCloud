@@ -1,5 +1,6 @@
 # Database CRUD functions
 from cloudApp.models import CloudStorage, CloudUser
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib import messages
 
@@ -14,16 +15,17 @@ def create_file(request):
 
 # retrieve file
 def retrieve_file_all(request):
-    rs = CloudStorage.CStorage.all()
+    return CloudStorage.CStorage.all()
 
 
 def retrieve_file_filter_filename(request):
-    rs1 = CloudStorage.CStorage.filter(filename__contains=request.POST.get("filename"))
+    rs = CloudStorage.CStorage.filter(filename__contains=request.POST.get("filename"))
+    return rs
 
 
 def retrieve_file_filter_owner(request):
-    rs2 = CloudStorage.CStorage.filter(owner__account=request.session['account'])
-    rs2 = list(rs2)
+    rs = CloudStorage.CStorage.filter(owner__account=request.session['account'])
+    return list(rs)
 
 
 # update file
@@ -50,3 +52,11 @@ def retrieve_user(account, password):
     rs1 = CloudUser.CUser.get(account=account, password=password)
     if rs1:
         return True
+
+
+# create test user
+def create_testuser(request):
+    cs = CloudUser.CUser.get_or_create(name='001', account='001',
+                                       password='001')
+    messages.success(request, "Sign up Success")
+    return HttpResponse("success")

@@ -23,23 +23,8 @@
           </div>
         </nav>
 
-        <!-- login -->
-        <form class="form-signin text-center" method="post" action="/">
-          {% csrf_token %}
-          <img class="mb-4" src="{% static 'img/cloud.png' %}" alt="" width="72" height="72">
-          <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
-          <label for="inputaccount" class="sr-only">IMIS Account</label>
-          <input type="text" id="inputaccount" class="form-control" placeholder="IMIS Account" required="" autofocus="" name="account">
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" name="remember" checked="checked" onclick="rememberMe()" id="rememberme"> Remember me
-            </label>
-          </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          <p class="mt-5 mb-3 text-muted">© 0000-2020</p>
-        </form>
+        <!-- login/register -->
+        {% block content %}{% endblock %}
 
         <!-- message -->
         {% if messages %}
