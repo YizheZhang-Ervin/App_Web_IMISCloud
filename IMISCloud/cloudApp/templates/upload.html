@@ -1,0 +1,46 @@
+{% extends "index_base.html" %}
+{% load static %}
+{% block title %}IMISCloud Upload{% endblock %}
+
+{% block content %}
+<!-- upload -->
+<form method="post" action="/upload/" class="my-2 needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="row clear-lr">
+        <!-- select files -->
+        <div class="col-12 mb-3">
+            <label for="selectfile" class="btn">Select Files:</label>
+            <input name="selectfile" class="form-control" id="selectfile" type="file" required="" placeholder="">
+            <div class="invalid-feedback">Valid file is required.</div>
+        </div>
+        <!-- filename -->
+        <div class="col-12 mb-3">
+            <label for="filename" class="btn">Custom Filename:</label>
+            <input name="filename" class="form-control" id="filename" type="text" required="" placeholder="filename">
+            <div class="invalid-feedback">Valid filename is required.</div>
+        </div>
+        <!-- filetype -->
+        <div class="col-12 mb-3">
+            <label for="filetype" class="btn">File Type:</label>
+            <select id="filetype" class="form-control d-inline" name="filetype">
+                <option value ="file">File</option>
+                <option value ="image">Image</option>
+                <option value ="music">Music</option>
+                <option value ="video">Video</option>
+            </select>
+            <div class="invalid-feedback">Valid file type is required.</div>
+        </div>
+        <!-- attribute -->
+        <div class="col-12 mb-3">
+            <label for="attribute" class="btn">Accessible:</label>
+            <select id="attribute" class="form-control d-inline" name="attribute">
+                <option value ="private">Private</option>
+                <option value ="shared">Shared</option>
+            </select>
+            <div class="invalid-feedback">Valid attribute is required.</div>
+        </div>
+        <hr class="mb-4">
+        <input class="form-control col-6 margin-auto btn-dark" type="submit" value="Upload">
+    </div>
+</form>
+{% endblock %}

@@ -22,6 +22,9 @@ from cloudApp import crud
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
+    path('upload/', views.upload),
+    path('result/', views.searchresult),
+    path('recycle/', views.recycle),
     # path('testuser/', crud.create_testuser),
     path('', views.login)
 ]

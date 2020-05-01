@@ -1,0 +1,36 @@
+{% extends "index_base.html" %}
+{% load static %}
+{% block title %}IMISCloud Storage{% endblock %}
+
+{% block content %}
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">File Name | Type</th>
+        <th scope="col">Operations</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for r in rst %}
+        <tr>
+            <td>
+                <input class="ipt-transparent ellipsis txt-indent-1" value="{{ r.filename }}">
+                <select class="ipt-transparent">
+                    <option value="{{ r.filetype }}">Current({{ r.filetype }})</option>
+                    <option value ="file">File</option>
+                    <option value ="image">Image</option>
+                    <option value ="music">Music</option>
+                    <option value ="video">Video</option>
+                </select>
+            </td>
+            <td>
+                <a class="btn"><img class="w-60" src="{% static 'img/download.png'%}"></a>
+                <a class="btn"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
