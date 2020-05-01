@@ -16,17 +16,21 @@
     {% for r in rst %}
         <tr>
             <td>
-                <input class="ipt-transparent ellipsis txt-indent-1" value="{{ r.filename }}">
-                <select class="ipt-transparent">
-                    <option value="{{ r.filetype }}">Current({{ r.filetype }})</option>
-                    <option value ="file">File</option>
-                    <option value ="image">Image</option>
-                    <option value ="music">Music</option>
-                    <option value ="video">Video</option>
-                </select>
+                <form method="get" action="/update/">
+                    {% csrf_token %}
+                    <input name="fileid" value="{{r.id}}" hidden>
+                    <input name="filename" class="ipt-transparent ellipsis txt-indent-1" value="{{ r.filename }}" onchange="this.form.submit()">
+                    <select name="filetype" class="ipt-transparent"  onchange="this.form.submit()">
+                        <option value="{{ r.filetype }}">Current({{ r.filetype }})</option>
+                        <option value ="file">File</option>
+                        <option value ="image">Image</option>
+                        <option value ="music">Music</option>
+                        <option value ="video">Video</option>
+                    </select>
+                </form>
             </td>
             <td>
-                <a class="btn"><img class="w-60" src="{% static 'img/download.png'%}"></a>
+                <a class="btn" href="/CloudStorage/{{r.filename_origin}}" download="{{r.filename_origin}}"><img class="w-60" src="{% static 'img/download.png'%}"></a>
                 <a class="btn"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
             </td>
         </tr>

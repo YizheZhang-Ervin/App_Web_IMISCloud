@@ -13,11 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
+from IMISCloud import settings
 from cloudApp import views
-from cloudApp import crud
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,9 @@ urlpatterns = [
     path('upload/', views.upload),
     path('result/', views.searchresult),
     path('recycle/', views.recycle),
+    path('update/', views.update),
     # path('testuser/', crud.create_testuser),
     path('', views.login)
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

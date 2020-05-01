@@ -3,7 +3,7 @@ from django.contrib import messages
 
 # Create your views here.
 from cloudApp.crud import retrieve_user, create_file, retrieve_userobj, \
-    retrieve_file_filter_owner_filetype, retrieve_file_filter_attribute, retrieve_file_filter_filename
+    retrieve_file_filter_owner_filetype, retrieve_file_filter_attribute, retrieve_file_filter_filename, update_one_file
 
 
 def login(request):
@@ -45,12 +45,13 @@ def upload(request):
     if request.method == "GET":
         return render(request, 'upload.html')
     elif request.method == "POST":
-        sf = request.POST.get('selectfile')
+        sf = request.FILES.get('selectfile')
+        fn_origin = str(sf).split("/")[-1]
         fn = request.POST.get('filename')
         ft = request.POST.get('filetype')
         attr = request.POST.get('attribute')
         owner = retrieve_userobj(request.session['account'])
-        if create_file(sf, fn, ft, attr, owner):
+        if create_file(sf, fn, fn_origin, ft, attr, owner):
             messages.success(request, "Upload Success")
             return render(request, 'upload.html')
         else:
@@ -78,6 +79,15 @@ def searchresult(request):
         filename = request.POST.get("filename")
         rst = retrieve_file_filter_filename(filename)
         return render(request, "result.html", {'rst': rst})
+
+
+def update(request):
+    fn = request.GET.get("filename")
+    ft = request.GET.get("filetype")
+    fid = request.GET.get("fileid")
+    if update_one_file(fn, ft, fid):
+        messages.success(request, "Update Success")
+    return render(request, "index.html")
 
 
 def recycle(request):

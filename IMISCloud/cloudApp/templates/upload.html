@@ -4,7 +4,7 @@
 
 {% block content %}
 <!-- upload -->
-<form method="post" action="/upload/" class="my-2 needs-validation" novalidate>
+<form method="post" action="/upload/" class="my-2 needs-validation" novalidate enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row clear-lr">
         <!-- select files -->

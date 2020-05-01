@@ -6,9 +6,9 @@ from django.contrib import messages
 
 
 # create file
-def create_file(selectfile, filename, filetype, attribute, owner):
+def create_file(selectfile, filename, fn_origin, filetype, attribute, owner):
     # create unique new file
-    cs = CloudStorage.CStorage.get_or_create(owner=owner, file=selectfile, filename=filename,
+    cs = CloudStorage.CStorage.get_or_create(owner=owner, file=selectfile, filename=filename, filename_origin=fn_origin,
                                              filetype=filetype, attribute=attribute)
     if cs:
         return True
@@ -34,10 +34,18 @@ def retrieve_file_filter_attribute(attribute):
     return rs
 
 
-# update file
-def update_file(request):
-    CloudStorage.CStorage.all().update(filename=request.POST.get("filename"), filetype=request.POST.get("filetype"))
-    messages.success(request, "Update Success")
+# update all file
+def update_all_file(filename, filetype):
+    ud = CloudStorage.CStorage.all().update(filename=filename, filetype=filetype)
+    if ud:
+        return True
+
+
+# update one file
+def update_one_file(filename, filetype, fileid):
+    ud = CloudStorage.CStorage.filter(id=fileid).update(filename=filename, filetype=filetype)
+    if ud:
+        return True
 
 
 # delete file
