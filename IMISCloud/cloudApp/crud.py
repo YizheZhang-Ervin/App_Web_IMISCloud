@@ -20,17 +20,26 @@ def retrieve_file_all(request):
 
 
 def retrieve_file_filter_owner_filetype(owner, filetype):
-    rs = CloudStorage.CStorage.filter(owner__account=owner, filetype=filetype)
+    # user self file + given filetype + saved file
+    rs = CloudStorage.CStorage.filter(owner__account=owner, filetype=filetype, status="saved")
     return rs
 
 
-def retrieve_file_filter_filename(filename):
-    rs = CloudStorage.CStorage.filter(filename__contains=filename)
+def retrieve_recycle(owner):
+    # user self file + deleted file
+    rs = CloudStorage.CStorage.filter(owner__account=owner, status="deleted")
+    return rs
+
+
+def retrieve_file_filter_filename(owner, filename):
+    # user self file + given filename + saved file
+    rs = CloudStorage.CStorage.filter(owner__account=owner, filename__contains=filename, status="saved")
     return rs
 
 
 def retrieve_file_filter_attribute(attribute):
-    rs = CloudStorage.CStorage.filter(attribute=attribute)
+    # shared or private file + saved file
+    rs = CloudStorage.CStorage.filter(attribute=attribute, status="saved")
     return rs
 
 
@@ -44,6 +53,20 @@ def update_all_file(filename, filetype):
 # update one file
 def update_one_file(filename, filetype, fileid):
     ud = CloudStorage.CStorage.filter(id=fileid).update(filename=filename, filetype=filetype)
+    if ud:
+        return True
+
+
+# drop file to bin
+def update_one_file_to_bin(fileid):
+    ud = CloudStorage.CStorage.filter(id=fileid).update(status="deleted")
+    if ud:
+        return True
+
+
+# drop file to bin
+def recover_file(fileid):
+    ud = CloudStorage.CStorage.filter(id=fileid).update(status="saved")
     if ud:
         return True
 

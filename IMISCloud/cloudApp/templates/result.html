@@ -3,8 +3,6 @@
 {% block title %}IMISCloud Storage{% endblock %}
 
 {% block content %}
-
-
 <table class="table table-striped">
     <thead>
     <tr>
@@ -31,7 +29,7 @@
             </td>
             <td>
                 <a class="btn" href="/CloudStorage/{{r.filename_origin}}" download="{{r.filename_origin}}"><img class="w-60" src="{% static 'img/download.png'%}"></a>
-                <a class="btn"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
+                <a class="btn" href="/drop/?fid={{r.id}}"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
             </td>
         </tr>
     {% endfor %}

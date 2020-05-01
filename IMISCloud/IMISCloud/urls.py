@@ -27,6 +27,8 @@ urlpatterns = [
     path('result/', views.searchresult),
     path('recycle/', views.recycle),
     path('update/', views.update),
+    path('drop/', views.drop),
+    path('backbin/', views.backbin),
     # path('testuser/', crud.create_testuser),
     path('', views.login)
 ]

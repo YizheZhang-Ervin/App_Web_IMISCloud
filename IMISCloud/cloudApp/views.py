@@ -3,7 +3,8 @@ from django.contrib import messages
 
 # Create your views here.
 from cloudApp.crud import retrieve_user, create_file, retrieve_userobj, \
-    retrieve_file_filter_owner_filetype, retrieve_file_filter_attribute, retrieve_file_filter_filename, update_one_file
+    retrieve_file_filter_owner_filetype, retrieve_file_filter_attribute, retrieve_file_filter_filename, update_one_file, \
+    update_one_file_to_bin, retrieve_recycle, recover_file
 
 
 def login(request):
@@ -77,7 +78,8 @@ def searchresult(request):
         return render(request, "result.html", {"rst": rst})
     elif request.method == "POST":
         filename = request.POST.get("filename")
-        rst = retrieve_file_filter_filename(filename)
+        owner = request.session['account']
+        rst = retrieve_file_filter_filename(owner, filename)
         return render(request, "result.html", {'rst': rst})
 
 
@@ -91,4 +93,20 @@ def update(request):
 
 
 def recycle(request):
-    return render(request, "recycle.html")
+    owner = request.session['account']
+    rr = retrieve_recycle(owner)
+    return render(request, "recycle.html", {'rst': rr})
+
+
+def drop(request):
+    fid = request.GET.get("fid")
+    if update_one_file_to_bin(fileid=fid):
+        messages.success(request, "Delete Success, also you can recover from trash bin")
+    return render(request, "index.html")
+
+
+def backbin(request):
+    fid = request.GET.get("fid")
+    if recover_file(fileid=fid):
+        messages.success(request, "Recover Success")
+    return render(request, "index.html")
