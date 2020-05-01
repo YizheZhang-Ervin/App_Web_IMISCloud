@@ -18,8 +18,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="navbar-collapse collapse margin-top-1 color-g indent-3" id="navbarsExample01">
-            <p>Contact FullStack Manager: <a class="color-g" href="http://ervinzhang.pythonanywhere.com/">ErvinZhang</a></p>
-            <p>Contact DevOps Manager: <a class="color-g" href="https://www.linkedin.com/in/仕杰-何-98a516190">KingHe</a></p>
+            <p>Contact RD/UE Manager: <a class="color-g" href="http://ervinzhang.pythonanywhere.com/">ErvinZhang</a></p>
+            <p>Contact OP/QA Manager: <a class="color-g" href="https://www.linkedin.com/in/仕杰-何-98a516190">KingHe</a></p>
           </div>
         </nav>
 
@@ -40,6 +40,16 @@
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           <p class="mt-5 mb-3 text-muted">© 0000-2020</p>
         </form>
+
+        <!-- message -->
+        {% if messages %}
+            <script>
+                {% for msg in messages %}
+                    alert('{{ msg.message }}');
+                {% endfor %}
+            </script>
+        {% endif %}
+
         <!-- scripts -->
         <script src="{% static 'js/common.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
