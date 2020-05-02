@@ -1,1 +1,1 @@
-web: gunicorn -b "0.0.0.0:$PORT" -w 3 IMISCloud/IMISCloud.wsgi
+web: gunicorn {{ IMISCloud }}.wsgi
