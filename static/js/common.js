@@ -18,21 +18,11 @@ function cancelBubble(e) {
     }
 }
 
-function cancelBubble(e) {
-    var evt = e ? e : window.event;
-    if(evt.stopPropagation) { //W3C 
-        evt.stopPropagation();
-    } else { //IE      
-        evt.cancelBubble = true;
-    }
-}
-
-
 function details(filename){
     event.stopPropagation();
     document.getElementById("btn-details").click();
-    document.getElementById("embed-content").src= "/CloudStorage/"+filename;
-    document.getElementById("dld").href = "/CloudStorage/"+filename;
+    document.getElementById("embed-content").src= "/CloudStorage/files/"+filename;
+    document.getElementById("dld").href = "/CloudStorage/files/"+filename;
     document.getElementById("dld").download = filename;
 }
 

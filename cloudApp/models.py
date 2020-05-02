@@ -7,7 +7,7 @@ from IMISCloud.settings import MEDIA_ROOT
 class CloudUser(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30, default='Anonymous user')
-    account = models.TextField(unique=True)
+    account = models.CharField(unique=True, max_length=20)
     password = models.TextField()
     usertype = models.CharField(max_length=20, default='common')
     status = models.CharField(max_length=20, default='active')
