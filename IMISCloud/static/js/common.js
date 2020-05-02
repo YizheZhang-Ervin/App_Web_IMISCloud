@@ -9,7 +9,27 @@ function rememberMe(){
     rememberme.checked = "checked";
 }
 
+function cancelBubble(e) {
+    var evt = e ? e : window.event;
+    if(evt.stopPropagation) { //W3C 
+        evt.stopPropagation();
+    } else { //IE      
+        evt.cancelBubble = true;
+    }
+}
+
+function cancelBubble(e) {
+    var evt = e ? e : window.event;
+    if(evt.stopPropagation) { //W3C 
+        evt.stopPropagation();
+    } else { //IE      
+        evt.cancelBubble = true;
+    }
+}
+
+
 function details(filename){
+    event.stopPropagation();
     document.getElementById("btn-details").click();
     document.getElementById("embed-content").src= "/CloudStorage/"+filename;
     document.getElementById("dld").href = "/CloudStorage/"+filename;

@@ -17,8 +17,8 @@
                 <form method="get" action="/update/">
                     {% csrf_token %}
                     <input name="fileid" value="{{r.id}}" hidden>
-                    <input name="filename" class="ipt-transparent ellipsis txt-indent-1" value="{{ r.filename }}" onchange="this.form.submit()">
-                    <select name="filetype" class="ipt-transparent"  onchange="this.form.submit()">
+                    <input name="filename" class="ipt-transparent ellipsis txt-indent-1" value="{{ r.filename }}" onchange="this.form.submit()" onclick="cancelBubble()">
+                    <select name="filetype" class="ipt-transparent"  onchange="this.form.submit()" onclick="cancelBubble()">
                         <option value="{{ r.filetype }}">Current({{ r.filetype }})</option>
                         <option value ="file">File</option>
                         <option value ="image">Image</option>
@@ -28,8 +28,8 @@
                 </form>
             </td>
             <td>
-                <a class="btn" href="/CloudStorage/{{r.filename_origin}}" download="{{r.filename_origin}}"><img class="w-60" src="{% static 'img/download.png'%}"></a>
-                <a class="btn" href="/drop/?fid={{r.id}}"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
+                <a class="btn" href="/CloudStorage/{{r.filename_origin}}" download="{{r.filename_origin}}" onclick="cancelBubble()"><img class="w-60" src="{% static 'img/download.png'%}"></a>
+                <a class="btn" href="/drop/?fid={{r.id}}" onclick="cancelBubble()"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
             </td>
         </tr>
     {% endfor %}
