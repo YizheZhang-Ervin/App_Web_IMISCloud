@@ -1,1 +1,1 @@
-web: gunicorn IMISCloud.IMISCloud.wsgi
+web: gunicorn IMISCloud.wsgi
