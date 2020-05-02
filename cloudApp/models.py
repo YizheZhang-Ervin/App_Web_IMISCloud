@@ -27,7 +27,7 @@ class CloudStorage(models.Model):
     filename = models.TextField()
     filename_origin = models.TextField(null=True)
     filetype = models.TextField()
-    file = models.FileField(upload_to=MEDIA_ROOT)
+    file = models.FileField(upload_to='files')
     attribute = models.TextField(default='private')
     status = models.CharField(max_length=20, default='saved')
 
