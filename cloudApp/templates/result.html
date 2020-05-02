@@ -28,7 +28,7 @@
                 </form>
             </td>
             <td>
-                <a class="btn" href="/CloudStorage/{{r.filename_origin}}" download="{{r.filename_origin}}" onclick="cancelBubble()"><img class="w-60" src="{% static 'img/download.png'%}"></a>
+                <a class="btn" href="/CloudStorage/files/{{r.filename_origin}}" download="{{r.filename_origin}}" onclick="cancelBubble()"><img class="w-60" src="{% static 'img/download.png'%}"></a>
                 <a class="btn" href="/drop/?fid={{r.id}}" onclick="cancelBubble()"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
             </td>
         </tr>
