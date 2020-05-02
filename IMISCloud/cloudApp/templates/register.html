@@ -3,6 +3,19 @@
 {% block title %}IMISCloud Register{% endblock %}
 
 {% block content %}
-
+<!-- register -->
+    <form class="form-signin text-center self-container" id="mainpart" method="post" action="/register/">
+        {% csrf_token %}
+        <img class="mb-4" src="{% static 'img/cloud.png' %}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Please fill in the blank</h1>
+        <label for="inputname" class="sr-only">IMIS Account</label>
+        <input type="text" id="inputname" class="form-control" placeholder="IMIS Name" required="" autofocus="" name="name">
+        <label for="inputaccount" class="sr-only">IMIS Account</label>
+        <input type="text" id="inputaccount" class="form-control" placeholder="IMIS Account" required="" autofocus="" name="account">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        <p class="mt-5 mb-3 text-muted">© 0000-2020</p>
+    </form>
 
 {% endblock %}

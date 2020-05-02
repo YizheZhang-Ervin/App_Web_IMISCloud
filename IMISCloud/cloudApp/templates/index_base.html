@@ -21,7 +21,7 @@
                 <img class="w-50" src="{% static 'img/search.png' %}">
             </button>
             <div class="navbar-collapse collapse text-right" id="navbarsExample01">
-                <button class="btn navbar-toggler text-muted f-small" type="button">Log out</button>
+                <a class="btn navbar-toggler text-muted f-small" type="button" href="/clearsession">Log out</a>
                 <form class="form-inline my-2" method="post" action="/result/">
                   {% csrf_token %}
                   <input name="filename" class="form-control" type="text" placeholder="Search" aria-label="Search" onChange="this.form.submit();">
@@ -41,7 +41,7 @@
                     <div class="row clear-lr border-top">
                         <a class="btn" href="/upload"><img src="{% static 'img/upload.png' %}" title="Upload"><p class="m-0">Upload</p></a>
                         <a class="btn" href="/result/?resulttype=shared"><img src="{% static 'img/share.png' %}" title="Shared"><p class="m-0">Shared</p></a>
-                        <a class="btn" href="/recycle"><img src="{% static 'img/backbin.png' %}" title="Recycle"><p class="m-0">Recycle</p></a>
+                        <a class="btn" href="/recycle"><img src="{% static 'img/backbin.png' %}" title="Recycle"><p class="m-0">Find Back</p></a>
                     </div>
 
                 </div>

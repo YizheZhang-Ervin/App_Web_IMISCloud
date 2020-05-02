@@ -13,7 +13,7 @@ class CloudUser(models.Model):
     status = models.CharField(max_length=20, default='active')
 
     def __str__(self):
-        return self.id, self.name, self.account, self.password, self.usertype, self.status
+        return "{}{}{}{}{}{}".format(self.id, self.name, self.account, self.password, self.usertype, self.status)
 
     class Meta:
         db_table = 'CloudUser'
@@ -32,7 +32,7 @@ class CloudStorage(models.Model):
     status = models.CharField(max_length=20, default='saved')
 
     def __str__(self):
-        return self.id, self.owner, self.filename, self.filetype, self.file, self.attribute, self.status
+        return "{}{}{}{}{}{}{}".format(self.id, self.owner, self.filename, self.filetype, self.file, self.attribute, self.status)
 
     class Meta:
         db_table = 'CloudStorage'

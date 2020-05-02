@@ -9,6 +9,13 @@ function rememberMe(){
     rememberme.checked = "checked";
 }
 
+function details(filename){
+    document.getElementById("btn-details").click();
+    document.getElementById("embed-content").src= "/CloudStorage/"+filename;
+    document.getElementById("dld").href = "/CloudStorage/"+filename;
+    document.getElementById("dld").download = filename;
+}
+
 window.onload=function(){
     setHeight();
 }

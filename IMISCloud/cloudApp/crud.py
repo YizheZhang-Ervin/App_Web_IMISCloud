@@ -72,16 +72,17 @@ def recover_file(fileid):
 
 
 # delete file
-def delete_file(request):
-    CloudStorage.CStorage.get(file=request.POST.get("file")).delete()
-    messages.success(request, "Delete Success")
+def delete_file(fileid):
+    cs = CloudStorage.CStorage.get(id=fileid).delete()
+    if cs:
+        return True
 
 
 # create user
-def create_user(request):
-    cs = CloudUser.CUser.get_or_create(name=request.POST.get("name"), account=request.POST.get("account"),
-                                       password=request.POST.get("password"))
-    messages.success(request, "Sign up Success")
+def create_user(name, account, password):
+    cs = CloudUser.CUser.get_or_create(name=name, account=account, password=password)
+    if cs:
+        return True
 
 
 # retrieve user

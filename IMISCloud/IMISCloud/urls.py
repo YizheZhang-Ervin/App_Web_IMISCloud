@@ -28,8 +28,10 @@ urlpatterns = [
     path('recycle/', views.recycle),
     path('update/', views.update),
     path('drop/', views.drop),
+    path('delete/',views.delete),
     path('backbin/', views.backbin),
-    # path('testuser/', crud.create_testuser),
+    path('clearsession/', views.clearsession),
+    path('register/', views.register),
     path('', views.login)
 ]
 

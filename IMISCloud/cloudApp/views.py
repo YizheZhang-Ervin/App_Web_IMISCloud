@@ -4,7 +4,7 @@ from django.contrib import messages
 # Create your views here.
 from cloudApp.crud import retrieve_user, create_file, retrieve_userobj, \
     retrieve_file_filter_owner_filetype, retrieve_file_filter_attribute, retrieve_file_filter_filename, update_one_file, \
-    update_one_file_to_bin, retrieve_recycle, recover_file
+    update_one_file_to_bin, retrieve_recycle, recover_file, create_user, delete_file
 
 
 def login(request):
@@ -24,8 +24,7 @@ def login(request):
                 request.session['password'] = password
                 request.session['rememberme'] = remember
                 messages.success(request, "Login success")
-                return render(request, 'index.html',
-                              {'account': request.session['account'], 'password': request.session['password']})
+                return render(request, 'index.html')
             else:
                 messages.warning(request, "Wrong Account or Password")
                 return render(request, 'login.html')
@@ -35,7 +34,25 @@ def login(request):
 
 
 def register(request):
-    pass
+    if request.method == "GET":
+        return render(request, 'register.html')
+    elif request.method == "POST":
+        nm = request.POST.get("name")
+        acc = request.POST.get("account")
+        pw = request.POST.get("password")
+        try:
+            if create_user(nm, acc, pw):
+                request.session['account'] = acc
+                request.session['password'] = pw
+                request.session['rememberme'] = "true"
+                messages.success(request, "Sign up Success")
+                return render(request, 'login.html')
+            else:
+                messages.success(request, "Sign up Failed 1)Existed account name 2)other reasons")
+                return render(request, 'register.html')
+        except Exception:
+            messages.success(request, "Sign up Failed,Please try again later")
+            return render(request, 'register.html')
 
 
 def index(request):
@@ -105,8 +122,20 @@ def drop(request):
     return render(request, "index.html")
 
 
+def delete(request):
+    fid = request.GET.get("fid")
+    if delete_file(fid):
+        messages.success(request, "Delete Success")
+    return render(request, "index.html")
+
+
 def backbin(request):
     fid = request.GET.get("fid")
     if recover_file(fileid=fid):
         messages.success(request, "Recover Success")
     return render(request, "index.html")
+
+
+def clearsession(request):
+    request.session.flush()
+    return render(request, 'login.html')

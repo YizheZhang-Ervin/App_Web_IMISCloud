@@ -28,7 +28,7 @@
                 </form>
             </td>
             <td>
-                <a class="btn" href="/CloudStorage/{{r.filename_origin}}" download="{{r.filename_origin}}"><img class="w-60" src="{% static 'img/download.png'%}"></a>
+                <a class="btn" href="/delete/?fid={{r.id}}"><img class="w-60" src="{% static 'img/delete.png'%}"></a>
                 <a class="btn" href="/backbin/?fid={{r.id}}"><img class="w-60" src="{% static 'img/backbin.png'%}"></a>
             </td>
         </tr>
