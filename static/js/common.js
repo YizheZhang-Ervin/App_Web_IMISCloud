@@ -31,8 +31,8 @@ function cancelBubble(e) {
 function details(filename){
     event.stopPropagation();
     document.getElementById("btn-details").click();
-    document.getElementById("embed-content").src= "/CloudStorage/files"+filename;
-    document.getElementById("dld").href = "/CloudStorage/files"+filename;
+    document.getElementById("embed-content").src= "/CloudStorage/files/"+filename;
+    document.getElementById("dld").href = "/CloudStorage/files/"+filename;
     document.getElementById("dld").download = filename;
 }
 
