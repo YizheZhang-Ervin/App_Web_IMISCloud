@@ -40,19 +40,19 @@ def register(request):
         nm = request.POST.get("name")
         acc = request.POST.get("account")
         pw = request.POST.get("password")
-        try:
-            if create_user(nm, acc, pw):
-                request.session['account'] = acc
-                request.session['password'] = pw
-                request.session['rememberme'] = "true"
-                messages.success(request, "Sign up Success")
-                return render(request, 'login.html')
-            else:
-                messages.success(request, "Sign up Failed 1)Existed account name 2)other reasons")
-                return render(request, 'register.html')
-        except Exception:
-            messages.success(request, "Sign up Failed,Please try again later")
+        # try:
+        if create_user(nm, acc, pw):
+            request.session['account'] = acc
+            request.session['password'] = pw
+            request.session['rememberme'] = "true"
+            messages.success(request, "Sign up Success")
+            return render(request, 'login.html')
+        else:
+            messages.success(request, "Sign up Failed 1)Existed account name 2)other reasons")
             return render(request, 'register.html')
+        # except Exception:
+        #     messages.success(request, "Sign up Failed,Please try again later")
+        #     return render(request, 'register.html')
 
 
 def index(request):
